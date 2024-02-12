@@ -8,7 +8,7 @@ POST {{url}}/clients/1/transacoes
 Content-Type: application/json
 
 {
-    "valor": 1000,
-    "tipo": "d",
+    "valor": 200000,
+    "tipo": "c",
     "descricao": "descricao"
 }

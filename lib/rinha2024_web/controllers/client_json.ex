@@ -25,8 +25,9 @@ alias Rinha2024.Clients.ClientSchema
       },
       ultimas_transacoes: Enum.map(client.transactions, fn transaction -> %{
         valor: transaction.value,
-        type: transaction.type,
-        descricao: transaction.description
+        tipo: transaction.type,
+        descricao: transaction.description,
+        realizada_em: transaction.created_at,
       } end),
     }
   end
@@ -40,6 +41,12 @@ alias Rinha2024.Clients.ClientSchema
   def bad_request(%{changeset: changeset}) do
     %{
       errors: Enum.map(changeset.errors, fn({key, {reason, _}}) -> "#{key}: #{reason}" end)
+    }
+  end
+
+  def unprocessable_entity(%{}) do
+    %{
+      error: "Limit exceeded"
     }
   end
 end

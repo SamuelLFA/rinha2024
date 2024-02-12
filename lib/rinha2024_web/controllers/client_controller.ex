@@ -29,6 +29,11 @@ defmodule Rinha2024Web.ClientController do
       |> put_status(:ok)
       |> render(:transaction, client: transaction.client)
     else
+      {:error, message} when is_bitstring(message) ->
+        conn
+        |> put_status(:unprocessable_entity)
+        |> render(:unprocessable_entity)
+
       {:error, changeset} ->
         conn
         |> put_status(:bad_request)

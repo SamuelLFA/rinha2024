@@ -8,6 +8,7 @@ defmodule Rinha2024.Clients.TransactionSchema do
     field :value, :integer
     field :type, :string
     field :description, :string
+    field :created_at, :utc_datetime_usec
 
     belongs_to :client, ClientSchema
   end
