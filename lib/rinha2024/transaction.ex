@@ -5,13 +5,17 @@ defmodule Rinha2024.Transaction do
   alias Rinha2024.Clients
 
   def add_transaction(attrs, client_id) do
-    case Clients.update_balance(client_id, attrs.value) do
-      {:ok, client} ->
-        %TransactionSchema{client: client}
-        |> TransactionSchema.changeset(attrs)
-        |> Repo.insert()
+    try do
+      case Clients.update_balance!(client_id, attrs.value) do
+        {:ok, client} ->
+          %TransactionSchema{client: client}
+          |> TransactionSchema.changeset(attrs)
+          |> Repo.insert()
 
-      {:error, message} -> {:error, message}
+        {:error, message} -> {:error, message}
+      end
+    rescue
+      Ecto.NoResultsError -> {:error, "client not found"}
     end
   end
 end

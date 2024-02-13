@@ -1,14 +1,10 @@
-@url = http://localhost:4000/api
+@url = http://localhost:9999
 
 ### Extrato
-GET {{url}}/clients/1/extrato
+GET {{url}}/clientes/2/extrato
 
 ### Transaction
-POST {{url}}/clients/1/transacoes
+POST {{url}}/clientes/2/transacoes
 Content-Type: application/json
 
-{
-    "valor": 200000,
-    "tipo": "c",
-    "descricao": "descricao"
-}
+{"valor": 6784, "tipo": "c", "descricao": "C2Ecvha34z"}

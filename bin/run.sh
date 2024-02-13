@@ -1,0 +1,1 @@
+/app/bin/migrate && /app/bin/server

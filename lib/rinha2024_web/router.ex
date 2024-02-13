@@ -5,9 +5,9 @@ defmodule Rinha2024Web.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/api", Rinha2024Web do
+  scope "/", Rinha2024Web do
     pipe_through :api
-    get "/clients/:id/extrato", ClientController, :bank_statement
-    post "/clients/:id/transacoes", ClientController, :add_transaction
+    get "/clientes/:id/extrato", ClientController, :bank_statement
+    post "/clientes/:id/transacoes", ClientController, :add_transaction
   end
 end

@@ -11,7 +11,7 @@ defmodule Rinha2024.Clients do
     |> Repo.get!(id)
   end
 
-  def update_balance(client_id, transaction_value) do
+  def update_balance!(client_id, transaction_value) do
     case ClientSchema
       |> Repo.get!(client_id)
       |> ClientSchema.update_balance(transaction_value) do

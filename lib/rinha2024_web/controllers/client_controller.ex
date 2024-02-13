@@ -29,6 +29,11 @@ defmodule Rinha2024Web.ClientController do
       |> put_status(:ok)
       |> render(:transaction, client: transaction.client)
     else
+      {:error, message} when message == "client not found" ->
+        conn
+        |> put_status(:not_found)
+        |> render(:not_found, id: client_id)
+
       {:error, message} when is_bitstring(message) ->
         conn
         |> put_status(:unprocessable_entity)
